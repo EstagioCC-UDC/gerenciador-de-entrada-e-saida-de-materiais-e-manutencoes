@@ -23,7 +23,7 @@ para efetuar login no keycloak.
 
 Passe o mouse em cima do nome do realm (Master) e selecione Add Realm. No nome do realm coloque `dev` e clique em `Select File` para importar os dados de um realm já existente e selecione o arquivo `dev-realm.json` localizado na pasta `keycloak-seed` deste projeto.
 
-Após isso, efetue uma chamada GET para `http://localhost:8080/auth/realms/dev/protocol/openid-connect/token` utilizando o body como `x-form-urlencoded` passando os seguintes parâmetros
+Após isso, efetue uma chamada POST para `http://localhost:8080/auth/realms/dev/protocol/openid-connect/token` utilizando o body como `x-form-urlencoded` passando os seguintes parâmetros
 
 - client_id: gesmm
 - username: teste
@@ -42,3 +42,19 @@ E verifique se na resposta estão presentes os campos
 - scope
 
 Após isso, está garantido que o keycloak já está configurado e funcionando.
+
+# Ferramentas a serem instaladas
+
+- NVM (https://github.com/nvm-sh/nvm#installation-and-update)
+  - Após instalado, execute `nvm install 10.16.3`
+
+- Yarn (https://yarnpkg.com/lang/pt-br/docs/install/#debian-stable)
+
+- VScode (https://code.visualstudio.com/download)
+  - Abra o vscode e instale as extensões `prettier`, `eslint`, `vscode-styled-components`, `ES7 React/Redux/GraphQL/React-Native snippets`
+
+# Subindo o backend
+
+Crie uma cópia do arquivo `.env.example` com o nome `.env` e preencha os parâmetros conforme necessitar.
+
+No terminal, navegue até a pasta backend e rode o comando `yarn` e em seguida `yarn dev`. Acesse o navegador e abra `http://localhost:3333`.
