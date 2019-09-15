@@ -5,6 +5,12 @@ import qs from 'querystring';
 import authConfig from '../../config/auth';
 
 class SessionController {
+  /**
+   * Receives username, password and optional refresh_token inside request body
+   * and tries to generate session token on keycloak
+   * @param {Express.Request} req
+   * @param {Express.Response} res
+   */
   async login(req, res) {
     const schema = Yup.object().shape({
       username: Yup.string().required(),
