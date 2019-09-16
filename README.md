@@ -4,6 +4,12 @@ Projeto para gerenciamento de entrada e saída de materiais e manutenções
 
 # Subindo ambiente de desenvolvimento
 
+## Configurando o backend
+
+Crie uma cópia do arquivo `.env.example` com o nome `.env` e preencha os parâmetros conforme necessitar.
+
+## Configurando ferramentas
+
 Instale o docker (https://docs.docker.com/install/) e git escolhendo seu sistema operacional
 
 Após o docker ser instalado, clone este projeto, caso não o tenha feito e mude para a branch development
@@ -43,18 +49,16 @@ E verifique se na resposta estão presentes os campos
 
 Após isso, está garantido que o keycloak já está configurado e funcionando.
 
-# Ferramentas a serem instaladas
+Verifique agora se o backend está de pé acessando `http://localhost:3333`. deverá ser mostrado o json {hello: "world"}
+
+# Ferramentas auxiliares a serem instaladas
+
+- VScode (https://code.visualstudio.com/download)
+
+  - Abra o vscode e instale as extensões `prettier`, `eslint`, `vscode-styled-components`, `ES7 React/Redux/GraphQL/React-Native snippets`
 
 - NVM (https://github.com/nvm-sh/nvm#installation-and-update)
+
   - Após instalado, execute `nvm install 10.16.3`
 
 - Yarn (https://yarnpkg.com/lang/pt-br/docs/install/#debian-stable)
-
-- VScode (https://code.visualstudio.com/download)
-  - Abra o vscode e instale as extensões `prettier`, `eslint`, `vscode-styled-components`, `ES7 React/Redux/GraphQL/React-Native snippets`
-
-# Subindo o backend
-
-Crie uma cópia do arquivo `.env.example` com o nome `.env` e preencha os parâmetros conforme necessitar.
-
-No terminal, navegue até a pasta backend e rode o comando `yarn` e em seguida `yarn dev`. Acesse o navegador e abra `http://localhost:3333`.
