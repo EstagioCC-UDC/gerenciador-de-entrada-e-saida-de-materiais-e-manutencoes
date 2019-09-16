@@ -45,5 +45,20 @@ services:
     networks:
       - gesmm
 
+  backend-gesmm:
+    build: ./backend
+    container_name: backend-gesmm
+    ports:
+      - '3333:3333'
+    environment:
+      WAIT_HOSTS: database-gesmm:5432
+    depends_on:
+      - database-gesmm
+    networks:
+      - gesmm
+    volumes:
+      - ./backend:/usr/src/app/
+      - /usr/src/app/node_modules/
+
 networks:
   gesmm:
