@@ -7,9 +7,9 @@ const {
 } = process.env;
 
 export default {
-  keycloakBaseUrl: KEYCLOAK_BASE_URL,
-  keycloakRealm: KEYCLOAK_REALM,
-  keycloakTokenPath: KEYCLOAK_TOKEN_PATH,
-  keycloakClientId: KEYCLOAK_CLIENT_ID,
-  keycloakLogoutPath: KEYCLOAK_LOGOUT_PATH,
+  keycloakBaseUrl: KEYCLOAK_BASE_URL || 'http://localhost:8080/auth/realms',
+  keycloakRealm: KEYCLOAK_REALM || 'dev',
+  keycloakTokenPath: KEYCLOAK_TOKEN_PATH || 'protocol/openid-connect/token',
+  keycloakClientId: KEYCLOAK_CLIENT_ID || 'gesmm',
+  keycloakLogoutPath: KEYCLOAK_LOGOUT_PATH || 'protocol/openid-connect/logout',
 };

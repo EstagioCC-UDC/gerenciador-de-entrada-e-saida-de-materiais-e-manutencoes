@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-export default async (req, res, next) => {
+export default (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
@@ -9,10 +9,14 @@ export default async (req, res, next) => {
 
   const [, token] = authHeader.split(' ');
 
-  const decoded = jwt.decode(token);
+  try {
+    const decoded = jwt.decode(token);
 
-  req.params.userInfo = decoded;
-  req.params.sessionToken = token;
+    req.params.userInfo = decoded;
+    req.params.sessionToken = token;
 
-  next();
+    return next();
+  } catch (error) {
+    return res.status(401).json({ error: 'Usuário não está logado' });
+  }
 };

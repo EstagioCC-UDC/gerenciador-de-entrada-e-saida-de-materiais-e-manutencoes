@@ -57,7 +57,6 @@ class SessionController {
       );
       return res.status(200).json(response.data);
     } catch (error) {
-      console.log(error);
       if (refresh_token) {
         return res.status(400).json({ error: 'Sua sessão expirou' });
       }
@@ -72,6 +71,14 @@ class SessionController {
    * @param {Express.Response} res
    */
   async logout(req, res) {
+    const schema = Yup.object().shape({
+      refresh_token: Yup.string().required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Sessão inválida' });
+    }
+
     const {
       keycloakBaseUrl,
       keycloakRealm,
