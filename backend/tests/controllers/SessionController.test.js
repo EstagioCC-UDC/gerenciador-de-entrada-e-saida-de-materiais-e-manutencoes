@@ -70,3 +70,37 @@ describe('Testing SessionController login method', () => {
     });
   });
 });
+
+describe('Testing SessionController logout method', () => {
+  const scope = nock(`http://localhost:8080`);
+
+  test('it should not validate request body', async () => {
+    const req = {
+      body: {},
+    };
+
+    const res = response();
+
+    await SessionController.logout(req, res);
+    expect(res.status).toHaveBeenCalledTimes(1);
+    expect(res.json).toHaveBeenCalledWith({ error: 'Sessão inválida' });
+  });
+
+  test('it should call the keycloak logout endpoint once', async () => {
+    scope
+      .post('/auth/realms/dev/protocol/openid-connect/logout')
+      .reply(204, {});
+
+    const req = {
+      body: {
+        refresh_token: 'MOCKING',
+      },
+    };
+
+    const res = response();
+
+    await SessionController.logout(req, res);
+    expect(res.status).toHaveBeenCalledWith(204);
+    expect(res.status).toHaveBeenCalledTimes(1);
+  });
+});

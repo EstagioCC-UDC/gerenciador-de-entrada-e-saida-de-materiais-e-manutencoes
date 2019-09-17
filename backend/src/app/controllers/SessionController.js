@@ -63,6 +63,47 @@ class SessionController {
       return res.status(400).json({ error: 'Usuário ou senha incorretos' });
     }
   }
+
+  /**
+   * Receives the refresh_token inside the body of the request
+   * and logout the user from the keycloak
+   * @param {Express.Request} req
+   * @param {Express.Response} res
+   */
+  async logout(req, res) {
+    const schema = Yup.object().shape({
+      refresh_token: Yup.string().required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Sessão inválida' });
+    }
+
+    const {
+      keycloakBaseUrl,
+      keycloakRealm,
+      keycloakLogoutPath,
+      keycloakClientId,
+    } = authConfig;
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    };
+
+    const requestBody = {
+      client_id: keycloakClientId,
+      refresh_token: req.body.refresh_token,
+    };
+
+    await axios.post(
+      `${keycloakBaseUrl}/${keycloakRealm}/${keycloakLogoutPath}`,
+      qs.stringify(requestBody),
+      config
+    );
+    return res.status(204).send();
+  }
 }
 
 export default new SessionController();
