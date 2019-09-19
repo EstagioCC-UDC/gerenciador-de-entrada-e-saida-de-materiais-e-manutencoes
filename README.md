@@ -14,7 +14,7 @@ Instale o docker (https://docs.docker.com/install/) e git escolhendo seu sistema
 
 Após o docker ser instalado, clone este projeto, caso não o tenha feito e mude para a branch development
 
-Roda o comando `docker-compose up --build` na raiz do projeto (Caso não tenha configurado para o seu docker rodar sem sudo no linux, apenas adicione o sudo antes do comando, ou configure-o corretamente https://docs.docker.com/install/linux/linux-postinstall/).
+Roda o comando no terminal `docker volume create --name gesmm-postgresql -d local` e em seguida rode na raiz do projeto `docker-compose up --build` (Caso não tenha configurado para o seu docker rodar sem sudo no linux, apenas adicione o sudo antes do comando, ou configure-o corretamente https://docs.docker.com/install/linux/linux-postinstall/).
 
 Caso ocorra algum erro nesta etapa, verifique se não possue uma instância do postgresql rodando internamente na sua máquina, pois ela irá afetar a instalação do keycloak.
 
