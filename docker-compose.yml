@@ -62,6 +62,21 @@ services:
       - ./backend:/usr/src/app/
       - /usr/src/app/node_modules/
 
+  frontend-gesmm:
+    build: ./frontend
+    container_name: frontend-gesmm
+    environment:
+      # If using linux, coment the environment CHOKADIR_USEPOLLING
+      CHOKIDAR_USEPOLLING: true
+    ports:
+      - '3000:3000'
+      - '35729:35729'
+    networks:
+      - gesmm
+    volumes:
+      - ./frontend:/usr/src/app/
+      - /usr/src/app/node_modules/
+
 volumes:
   gesmm-postgresql:
     external: true
