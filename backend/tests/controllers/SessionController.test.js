@@ -1,6 +1,5 @@
 import nock from 'nock';
 import { response } from 'jest-mock-express';
-import 'dotenv/config';
 import SessionController from '../../src/app/controllers/SessionController';
 
 describe('Testing SessionController login method', () => {
@@ -16,7 +15,9 @@ describe('Testing SessionController login method', () => {
   });
 
   test('it should validate login', async () => {
-    scope.post('/auth/realms/dev/protocol/openid-connect/token').reply(200, {});
+    scope.post('/auth/realms/dev/protocol/openid-connect/token').reply(200, {
+      access_token: `eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJwSS1mR0RFdU5wNHFsVmo1VjUxR3doQWRid1FRSXhEc1lfUnN3MlV5WVRBIn0.eyJqdGkiOiIwMDg2YjAzYS00Mzg3LTQwZmUtYjEyNC1kNGJiYzU4MTJlYWIiLCJleHAiOjE1NjkwMDQ1NzMsIm5iZiI6MCwiaWF0IjoxNTY5MDA0MjczLCJpc3MiOiJodHRwOi8va2V5Y2xvYWs6ODA4MC9hdXRoL3JlYWxtcy9kZXYiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiZTNiOTBiMjctMDkxMC00YjQyLWJlZjYtMjE1ZTc4NTkwZjY1IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZ2VzbW0iLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiIzOTIzM2U5NS1iZjA5LTQyODctYTVhYi1iNzgwYTU1ODRiOGYiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJnZXNtbSI6eyJyb2xlcyI6WyJWSUVXRVIiLCJ1bWFfcHJvdGVjdGlvbiIsIkFETUlOIiwiVVNFUiJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidGVzdGUgdGVzdGUiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0ZSIsImdpdmVuX25hbWUiOiJ0ZXN0ZSIsImZhbWlseV9uYW1lIjoidGVzdGUiLCJlbWFpbCI6InRlc3RlQHRlc3RlLmNvbSJ9.clyUp_3G-LD_vRcESPVWjBh1uhXM4N05IOWMXrf72vlSNlD8J4wHy8LijGkqWVqB2VzbOD8za7nAmafFVEnZ27Y6LUI9Jtp-noSAy0l8kUCHclQ4tfyjfpsin3GOJ1C2HyhlUHNwFU7jddsqC6Pb-ij3gu2LXyz2g4tcAnI2pFkgYSH7gLltA1Sm5Cs42hF134CiR3GzNyc6RS9ElT2wLtorV755Ec_4STMvREelXcrBnVFDgX0yPc0E33GmhEELCUhI78Z5iylKnlVd7sO4YwDrtq-jwp6MezUxtep2ZUHWgvJJQa24QXnh7knpQpHp1a50MNrcy5NaO2yRDGc-bg`,
+    });
 
     const req = {
       body: {

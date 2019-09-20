@@ -3,8 +3,10 @@ import 'dotenv/config';
 import express from 'express';
 import Youch from 'youch';
 import 'express-async-errors';
+import cors from 'cors';
 
 import routes from './routes';
+import corsConfig from './config/cors';
 
 class App {
   constructor() {
@@ -17,6 +19,17 @@ class App {
 
   middlewares() {
     this.server.use(express.json());
+    const corsWhitelist = corsConfig.frontendCorsUrl.split(',');
+    const corsOptions = {
+      origin: function(origin, callback){
+        if(corsWhitelist.indexOf(origin) !== -1 || !origin) {
+          callback(null, true);
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+      }
+    }
+    this.server.use(cors(corsOptions));
   }
 
   routes() {
