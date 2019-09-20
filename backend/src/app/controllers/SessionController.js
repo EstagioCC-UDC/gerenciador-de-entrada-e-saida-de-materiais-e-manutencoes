@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import axios from 'axios';
 import qs from 'querystring';
+import jwt from 'jsonwebtoken';
 
 import authConfig from '../../config/auth';
 
@@ -55,7 +56,15 @@ class SessionController {
         qs.stringify(requestBody),
         config
       );
-      return res.status(200).json(response.data);
+
+      const decoded = jwt.decode(response.data.access_token);
+
+      const userInfo = {
+        ...response.data,
+        userInfo: decoded,
+      };
+
+      return res.status(200).json(userInfo);
     } catch (error) {
       if (refresh_token) {
         return res.status(400).json({ error: 'Sua sessão expirou' });

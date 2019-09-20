@@ -7,7 +7,7 @@ export const Container = styled.div`
   align-items: center;
   height: 100vh;
 
-  div {
+  > div {
     max-height: 500px;
     border: 1px solid #bbb;
     padding: 15px 15px;
@@ -18,6 +18,7 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: column;
     display: border-box;
+    margin: 20px 0;
 
     -webkit-box-shadow: 10px 9px 5px -4px rgba(170, 170, 170, 1);
     -moz-box-shadow: 10px 9px 5px -4px rgba(170, 170, 170, 1);
@@ -35,13 +36,41 @@ export const Container = styled.div`
       margin-top: 10px;
     }
 
-    > input {
-      border: 1px solid #bbb;
-      margin-bottom: 15px;
-      padding: 15px 10px;
-      font-size: 18px;
-      width: 300px;
-      border-radius: 15px;
+    > form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      > div {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        border: 1px solid #bbb;
+        margin-bottom: 15px;
+        padding: 15px 10px;
+        font-size: 18px;
+        width: 300px;
+        border-radius: 15px;
+
+        svg {
+          border-right: solid 1px #000;
+          padding-right: 10px;
+          display: flex;
+          font-size: 30px;
+        }
+
+        input {
+          border: none;
+          background-color: inherit;
+          margin-left: 10px;
+          display: block;
+          width: 100%;
+          font-size: 18px;
+          line-height: 18px;
+        }
+      }
     }
   }
 `;

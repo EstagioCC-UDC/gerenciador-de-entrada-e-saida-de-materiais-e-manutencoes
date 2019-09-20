@@ -30,6 +30,10 @@ const StyledButton = styled.button.attrs(props => ({
     cursor: not-allowed;
   }
 
+  &:hover {
+    background: ${props => `${lighten(0.1, props.backgroundColor)}`};
+  }
+
   > svg {
     font-size: 25;
   }
@@ -37,14 +41,10 @@ const StyledButton = styled.button.attrs(props => ({
   ${props =>
     props.loading &&
     css`
-      svg {
-        animation: ${rotate} 2s ease-out infinite;
+      > svg {
+        animation: ${rotate} 2s ease infinite;
       }
     `}
-
-  &:hover {
-    ${props => ` background: ${lighten(0.15, props.backgroundColor)};`}
-  }
 `;
 
 export { StyledButton };

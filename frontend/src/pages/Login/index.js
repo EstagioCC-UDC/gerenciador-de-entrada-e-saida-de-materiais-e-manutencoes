@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { FaUser, FaLock } from 'react-icons/fa';
 
 import logo from '../../assets/images/pf-logo.png';
-
 import Button from '../../components/Button';
 import { Container } from './styles';
 
 import { login } from './business';
+import { setUserInfo, setTokens } from '../../services/userInfo';
 
 class Login extends Component {
   state = {
@@ -14,12 +15,17 @@ class Login extends Component {
     password: '',
   };
 
-  handleLogin = async () => {
+  handleLogin = async e => {
+    e.preventDefault();
     const { username, password } = this.state;
     this.setState({ loading: true });
     try {
-      const userInfo = await login(username, password);
-      console.log(userInfo);
+      const response = await login(username, password);
+      // eslint-disable-next-line camelcase
+      const { userInfo, refresh_token, access_token } = response.data;
+
+      setUserInfo(userInfo);
+      setTokens(access_token, refresh_token);
     } catch (error) {
       console.log(error);
     }
@@ -37,7 +43,6 @@ class Login extends Component {
 
   render() {
     const { loading, username, password } = this.state;
-
     return (
       <Container>
         <div>
@@ -45,26 +50,39 @@ class Login extends Component {
             GESMM - Gerenciador de Entrada e Saída de Materiais e Manutenções
           </h2>
           <img src={logo} alt="Logo" />
-          <input
-            onChange={this.handleUsernameChange}
-            value={username}
-            type="text"
-            placeholder="Usuário"
-            autoComplete="off"
-          />
-          <input
-            onChange={this.handlePasswordChange}
-            value={password}
-            type="password"
-            placeholder="Senha"
-            autoComplete="new-password"
-          />
-          <Button
-            type="primary"
-            loading={loading}
-            onClick={this.handleLogin}
-            text="Entrar"
-          />
+          <form>
+            <div>
+              <FaUser />
+              <input
+                name="username"
+                id="usernameInput"
+                onChange={this.handleUsernameChange}
+                value={username}
+                type="text"
+                placeholder="Usuário"
+              />
+            </div>
+
+            <div>
+              <FaLock />
+              <input
+                name="password"
+                id="passwordInput"
+                onChange={this.handlePasswordChange}
+                value={password}
+                type="password"
+                placeholder="Senha"
+                autoComplete="new-password"
+              />
+            </div>
+
+            <Button
+              type="primary"
+              loading={loading}
+              onClick={this.handleLogin}
+              text="Entrar"
+            />
+          </form>
         </div>
       </Container>
     );

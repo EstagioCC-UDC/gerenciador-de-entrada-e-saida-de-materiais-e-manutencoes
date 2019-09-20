@@ -18,6 +18,13 @@ export default createGlobalStyle`
     font: 14px Roboto, sans-serif;
   }
 
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus, 
+  input:-webkit-autofill:active  {
+      -webkit-box-shadow: 0 0 0 30px #fafafa inset !important;
+  }
+
   #root {
     max-width: 1250px;
     margin: 0 auto;

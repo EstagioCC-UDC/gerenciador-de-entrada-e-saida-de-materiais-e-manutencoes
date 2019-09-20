@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon --legacy-watch src/server.js",
-    "test": "jest ./tests/"
+    "test": "jest ./tests/ "
   },
   "jest": {
     "transform": {

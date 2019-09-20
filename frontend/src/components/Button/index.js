@@ -9,6 +9,12 @@ const typeColorMap = {
   cancel: '#F75F3F',
 };
 
+/**
+ * @param {{onClick: Function,
+ * text: String,
+ * loading: Boolean,
+ * type: 'primary' | 'secondary' | 'cancel'}} props
+ */
 export default function Button({ onClick, text, loading, type }) {
   return (
     <StyledButton
