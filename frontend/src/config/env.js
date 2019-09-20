@@ -1,6 +1,6 @@
 export default {
   development: {
-    backendUrl: 'http://localhost:3333',
+    backendUrl: process.env.REACT_APP_BACKEND_URL || 'http://localhost:3333',
   },
   test: {
     backendUrl: 'http://localhost:3333',

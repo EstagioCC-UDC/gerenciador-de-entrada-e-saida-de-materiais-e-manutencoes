@@ -19,7 +19,17 @@ class App {
 
   middlewares() {
     this.server.use(express.json());
-    this.server.use(cors(corsConfig.frontendCorsUrl));
+    const corsWhitelist = corsConfig.frontendCorsUrl.split(',');
+    const corsOptions = {
+      origin: function(origin, callback){
+        if(corsWhitelist.indexOf(origin) !== -1 || !origin) {
+          callback(null, true);
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+      }
+    }
+    this.server.use(cors(corsOptions));
   }
 
   routes() {
