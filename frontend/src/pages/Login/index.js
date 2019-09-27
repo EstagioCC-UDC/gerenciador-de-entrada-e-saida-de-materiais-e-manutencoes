@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FaUser, FaLock } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 import logo from '../../assets/images/pf-logo.png';
 import Button from '../../components/Button';
@@ -7,6 +8,7 @@ import { Container } from './styles';
 
 import { login } from './business';
 import { setUserInfo, setTokens } from '../../services/userInfo';
+import history from '../../services/history';
 
 class Login extends Component {
   state = {
@@ -19,6 +21,7 @@ class Login extends Component {
     e.preventDefault();
     const { username, password } = this.state;
     this.setState({ loading: true });
+
     try {
       const response = await login(username, password);
       // eslint-disable-next-line camelcase
@@ -26,11 +29,12 @@ class Login extends Component {
 
       setUserInfo(userInfo);
       setTokens(access_token, refresh_token);
+      this.setState({ loading: false }, () => history.push('/'));
+      toast('Logado com sucesso!', { type: toast.TYPE.SUCCESS });
     } catch (error) {
-      console.log(error);
+      this.setState({ loading: false });
+      toast(error, { type: toast.TYPE.ERROR });
     }
-
-    this.setState({ loading: false });
   };
 
   handleUsernameChange = e => {

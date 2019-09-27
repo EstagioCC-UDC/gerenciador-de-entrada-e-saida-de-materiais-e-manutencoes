@@ -22,13 +22,8 @@ export default createGlobalStyle`
   input:-webkit-autofill:hover, 
   input:-webkit-autofill:focus, 
   input:-webkit-autofill:active  {
-      -webkit-box-shadow: 0 0 0 30px #fafafa inset !important;
-  }
-
-  #root {
-    max-width: 1250px;
-    margin: 0 auto;
-    padding: 0 20px 50px;
+    box-shadow: 0 0 0 30px #fafafa inset !important;
+    -webkit-box-shadow: 0 0 0 30px #fafafa inset !important;
   }
 
   button {

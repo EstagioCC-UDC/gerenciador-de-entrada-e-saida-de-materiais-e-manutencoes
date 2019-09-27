@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Router } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import GlobalStyle from './styles/global';
+import 'react-toastify/dist/ReactToastify.css';
 
 import history from './services/history';
 import { getUserInfo } from './services/userInfo';
@@ -20,6 +22,7 @@ class App extends Component {
       <Router history={history}>
         <GlobalStyle />
         <Routes />
+        <ToastContainer autoClose={3000} />
       </Router>
     );
   }
