@@ -40,4 +40,19 @@ const getTokens = () => {
   };
 };
 
-export { getUserInfo, setUserInfo, setTokens, getTokens };
+/**
+ * Clears the tokens and user info from the browser local storage
+ */
+const clearUserInfoAndTokens = () => {
+  localStorage.removeItem(ACCESS_TOKEN);
+  localStorage.removeItem(REFRESH_TOKEN);
+  localStorage.removeItem(USER_INFO);
+};
+
+export {
+  getUserInfo,
+  setUserInfo,
+  setTokens,
+  getTokens,
+  clearUserInfoAndTokens,
+};

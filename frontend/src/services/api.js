@@ -1,6 +1,10 @@
 import axios from 'axios';
 import env from '../config/env';
+import { getTokens } from './userInfo';
 
-console.log(env[process.env.NODE_ENV].backendUrl);
+const token = getTokens().accessToken;
 
-export default axios.create({ baseURL: env[process.env.NODE_ENV].backendUrl });
+export default axios.create({
+  baseURL: env[process.env.NODE_ENV].backendUrl,
+  headers: { Authorization: `Bearer ${token}` },
+});
