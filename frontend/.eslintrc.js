@@ -26,5 +26,6 @@ module.exports = {
     'jsx-a11y/control-has-associated-label': 'off',
     'no-console': ['warn', { allow: ['tron'] }],
     'no-param-reassign': 'off',
+    'prefer-promise-reject-errors': 'off'
   },
 };
