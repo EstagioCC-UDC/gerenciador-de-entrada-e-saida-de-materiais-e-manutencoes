@@ -1,13 +1,14 @@
 import React from 'react';
-import { FaPowerOff } from 'react-icons/fa';
+import { FaPowerOff, FaBars } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 import { getUserInfo, clearUserInfoAndTokens } from '../../services/userInfo';
 
 import { StyledHeader } from './styles';
 import history from '../../services/history';
 import logout from './business';
 
-const Header = () => {
+const Header = ({ onToggleMenu }) => {
   const userInfo = getUserInfo();
 
   const handleLogout = () => {
@@ -20,13 +21,19 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <h3>GESMM</h3>
+      <button type="button" onClick={onToggleMenu}>
+        <FaBars />
+      </button>
       <button type="button" onClick={handleLogout}>
         {userInfo && userInfo.given_name}
         <FaPowerOff />
       </button>
     </StyledHeader>
   );
+};
+
+Header.propTypes = {
+  onToggleMenu: PropTypes.func.isRequired,
 };
 
 export default Header;
