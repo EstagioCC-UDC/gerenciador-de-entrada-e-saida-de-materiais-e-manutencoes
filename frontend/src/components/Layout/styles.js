@@ -48,6 +48,9 @@ export const MenuItem = styled.div`
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &:last-child {
     border-top: 1px solid white;
