@@ -10,8 +10,9 @@ export default function Routes() {
     <Switch>
       <Route path="/login" component={Login} />
       <Route>
-        <Layout />
-        <Home />
+        <Layout>
+          <Home />
+        </Layout>
       </Route>
     </Switch>
   );

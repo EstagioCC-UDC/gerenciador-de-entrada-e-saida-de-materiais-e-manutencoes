@@ -4,12 +4,9 @@ import { darken } from 'polished';
 export const StyledLayout = styled.div`
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   flex-shrink: 0;
   flex-grow: 1;
-
-  header {
-    flex: 1;
-  }
 `;
 
 export const Menu = styled.div`
@@ -17,13 +14,17 @@ export const Menu = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: left;
-  max-width: 300px;
   background-color: #09caed;
   font-size: 20px;
   font-weight: bold;
   color: white;
   flex: 1;
   height: 100vh;
+  transition: 0.8s;
+  position: relative;
+  overflow: hidden;
+
+  ${props => `min-width: ${props.isMenuOpen ? '300px' : '0'}`}
 
   a {
     text-decoration: none;
@@ -59,4 +60,12 @@ export const MenuItem = styled.div`
   &:hover {
     background-color: ${darken(0.04, '#09caed')};
   }
+`;
+
+export const ApplicationContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 `;
