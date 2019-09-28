@@ -3,7 +3,7 @@ import { getTokens } from '../../services/userInfo';
 
 const logout = () => {
   const { refreshToken } = getTokens();
-  return api.post('logout', {
+  return api().post('logout', {
     refresh_token: refreshToken,
   });
 };

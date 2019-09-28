@@ -2,12 +2,9 @@ import { Router } from 'express';
 
 import SessionController from './app/controllers/SessionController';
 import authMiddleware from './app/middleswares/auth';
+import restrictionMiddleware from './app/middleswares/restriction';
 
 const routes = new Router();
-
-routes.get('/', (req, res) => {
-  res.json({ Hello: 'World' });
-});
 
 routes.post('/login', SessionController.login);
 
@@ -18,5 +15,7 @@ routes.post('/login', SessionController.login);
 routes.use(authMiddleware);
 
 routes.post('/logout', SessionController.logout);
+
+routes.use(restrictionMiddleware);
 
 export default routes;
