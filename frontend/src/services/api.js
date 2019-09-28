@@ -1,23 +1,38 @@
 import axios from 'axios';
 import env from '../config/env';
-import { getTokens } from './userInfo';
+import { getTokens, clearUserInfoAndTokens } from './userInfo';
+import history from './history';
 
-const token = getTokens().accessToken;
+function createAxiosInstance() {
+  const token = getTokens().accessToken;
 
-const api = axios.create({
-  baseURL: env[process.env.NODE_ENV].backendUrl,
-  headers: { Authorization: `Bearer ${token}` },
-});
+  const config = {
+    baseURL: env[process.env.NODE_ENV].backendUrl,
+    headers: { Authorization: `Bearer ${token}` },
+  };
 
-api.interceptors.response.use(
-  response => {
-    return Promise.resolve(response);
-  },
-  error => {
-    return error.response.data.error
-      ? Promise.reject(error.response.data.error)
-      : Promise.reject('Erro interno do servidor: 500');
-  }
-);
+  const api = axios.create(config);
 
-export default api;
+  api.interceptors.response.use(
+    response => {
+      return Promise.resolve(response);
+    },
+    error => {
+      if (error.response.status === 401) {
+        return Promise.reject(error.response.data.error).finally(() => {
+          clearUserInfoAndTokens();
+          history.push('/login');
+        });
+      }
+
+      return error.response.data.error &&
+        typeof error.response.data.error === 'string'
+        ? Promise.reject(error.response.data.error)
+        : Promise.reject('Erro interno do servidor: 500');
+    }
+  );
+
+  return api;
+}
+
+export default createAxiosInstance;

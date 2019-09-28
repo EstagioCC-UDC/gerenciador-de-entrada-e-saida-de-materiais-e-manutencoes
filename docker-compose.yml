@@ -8,6 +8,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: gesmm
+      TZ: America/New_York
     ports:
       - '5432:5432'
     networks:
@@ -40,6 +41,7 @@ services:
       DB_SCHEMA: keycloak
       DB_USER: postgres
       DB_PASSWORD: postgres
+      TZ: America/New_York
     ports:
       - '8080:8080'
     depends_on:

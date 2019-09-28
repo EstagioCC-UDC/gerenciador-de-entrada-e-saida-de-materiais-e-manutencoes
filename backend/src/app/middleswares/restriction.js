@@ -26,13 +26,13 @@ const verifyAccess = (path, method, role) => {
 /**
  * Verifies if the token has expires and if user has permission on endpoint
  */
-export default (req, res, next) => {
+export default function (req, res, next) {
   const now = Math.floor(Date.now() / 1000);
-  if (now > req.userInfo.exp) {
+  if (now > res.locals.userInfo.exp) {
     return res.status(401).send({ error: 'Sua sessão expirou' });
   }
 
-  const { roles } = req.userInfo.resource_access[auth.keycloakClientId];
+  const { roles } = res.locals.userInfo.resource_access[auth.keycloakClientId];
 
   if (roles.includes(ADMIN)) return next();
   if (roles.includes(USER)) {

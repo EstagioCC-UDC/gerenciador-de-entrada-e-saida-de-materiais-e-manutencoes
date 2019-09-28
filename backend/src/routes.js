@@ -18,6 +18,4 @@ routes.post('/logout', SessionController.logout);
 
 routes.use(restrictionMiddleware);
 
-routes.get('/teste', (req, res) => res.json({ deu: 'bom' }));
-
 export default routes;

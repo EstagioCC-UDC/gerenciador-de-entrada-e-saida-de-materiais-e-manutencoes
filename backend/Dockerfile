@@ -4,6 +4,10 @@ ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait
 
 RUN chmod +x /wait
 
+RUN echo "America/New_York" > /etc/timezone
+
+RUN dpkg-reconfigure -f noninteractive tzdata
+
 WORKDIR /usr/src/app/
 
 COPY package*.json /usr/src/app/
