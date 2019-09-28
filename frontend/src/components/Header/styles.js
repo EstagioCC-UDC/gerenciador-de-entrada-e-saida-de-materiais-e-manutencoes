@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
-  width: 100%;
+  max-width: 100%;
   height: 60px;
   background: #14d4f6;
   font-size: 20px;
   font-weight: bold;
   color: white;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 0 20px;
   z-index: 50;

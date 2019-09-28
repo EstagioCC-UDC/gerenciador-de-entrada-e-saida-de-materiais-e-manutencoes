@@ -20,7 +20,6 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <h3>GESMM</h3>
       <button type="button" onClick={handleLogout}>
         {userInfo && userInfo.given_name}
         <FaPowerOff />

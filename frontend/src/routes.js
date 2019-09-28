@@ -3,14 +3,14 @@ import { Switch, Route } from 'react-router-dom';
 
 import Login from './pages/Login';
 import Home from './pages/Home';
-import Header from './components/Header';
+import Layout from './components/Layout';
 
 export default function Routes() {
   return (
     <Switch>
       <Route path="/login" component={Login} />
       <Route>
-        <Header />
+        <Layout />
         <Home />
       </Route>
     </Switch>
