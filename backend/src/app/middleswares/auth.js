@@ -1,5 +1,8 @@
 import jwt from 'jsonwebtoken';
 
+/**
+ * Injects user info in the http request
+ */
 export default (req, res, next) => {
   const authHeader = req.headers.authorization;
 
@@ -12,8 +15,8 @@ export default (req, res, next) => {
   try {
     const decoded = jwt.decode(token);
 
-    req.params.userInfo = decoded;
-    req.params.sessionToken = token;
+    req.userInfo = decoded;
+    req.sessionToken = token;
 
     return next();
   } catch (error) {
