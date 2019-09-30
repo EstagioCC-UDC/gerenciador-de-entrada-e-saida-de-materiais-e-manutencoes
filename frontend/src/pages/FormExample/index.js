@@ -16,7 +16,7 @@ class FormExample extends Component {
     const { loading, exemplo1, exemplo2, checked } = this.state;
     return (
       <Container loading={loading} title="Exemplo de formulário">
-        <Form>
+        <Form onSave={() => {}} onDelete={() => {}} onCancel={() => {}}>
           <Input
             id="exemplo1"
             label="Exemplo"

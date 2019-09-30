@@ -28,8 +28,8 @@ export default createGlobalStyle`
   }
 
   input:-webkit-autofill,
-  input:-webkit-autofill:hover, 
-  input:-webkit-autofill:focus, 
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
   input:-webkit-autofill:active  {
     box-shadow: 0 0 0 30px #fafafa inset !important;
     -webkit-box-shadow: 0 0 0 30px #fafafa inset !important;
@@ -37,5 +37,9 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
   }
 `;

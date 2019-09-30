@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 import { StyledCheckbox } from './styles';
 
-const Checkbox = props => {
-  const { id, label, onChange, checked } = props;
+const Checkbox = ({ id, label, onChange, checked }) => {
   return (
     <StyledCheckbox className="form-check">
       <input
