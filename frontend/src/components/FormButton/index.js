@@ -19,7 +19,7 @@ export default function FormButton({ onClick, text, loading, type }) {
   return (
     <StyledButton
       onClick={onClick}
-      className={typeClassMap[type]}
+      className={`${typeClassMap[type]} ripple`}
       loading={loading ? 1 : 0}
     >
       {loading ? <FaSpinner /> : text}

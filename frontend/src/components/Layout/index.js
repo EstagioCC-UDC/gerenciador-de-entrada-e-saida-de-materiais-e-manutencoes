@@ -9,6 +9,7 @@ import { StyledLayout, Menu, MenuItem, ApplicationContainer } from './styles';
 class Layout extends Component {
   state = {
     isMenuOpen: false,
+    activePath: '/',
   };
 
   componentDidMount() {
@@ -36,7 +37,7 @@ class Layout extends Component {
 
   render() {
     const { children } = this.props;
-    const { isMenuOpen } = this.state;
+    const { isMenuOpen, activePath } = this.state;
 
     return (
       <StyledLayout>
@@ -46,8 +47,14 @@ class Layout extends Component {
           </span>
           <div>
             {items.map((item, index) => (
-              <Link to={item.route} key={String(index)}>
-                <MenuItem>
+              <Link
+                to={item.route}
+                key={String(index)}
+                onClick={() => {
+                  this.setState({ activePath: item.route });
+                }}
+              >
+                <MenuItem className="ripple" active={item.route === activePath}>
                   {React.createElement(item.icon)}
                   {item.label}
                 </MenuItem>

@@ -7,37 +7,7 @@ const items = [
     label: 'Home',
   },
   {
-    route: '/',
-    icon: FaTasks,
-    label: 'Trocar Perito',
-  },
-  {
-    route: '/',
-    icon: FaHome,
-    label: 'Home',
-  },
-  {
-    route: '/',
-    icon: FaTasks,
-    label: 'Trocar Perito',
-  },
-  {
-    route: '/',
-    icon: FaHome,
-    label: 'Home',
-  },
-  {
-    route: '/',
-    icon: FaTasks,
-    label: 'Trocar Perito',
-  },
-  {
-    route: '/',
-    icon: FaHome,
-    label: 'Home',
-  },
-  {
-    route: '/',
+    route: '/change-expert',
     icon: FaTasks,
     label: 'Trocar Perito',
   },
