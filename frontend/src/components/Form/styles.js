@@ -8,10 +8,10 @@ export const StyledForm = styled.form`
       display: flex;
       justify-content: space-between;
       margin: 0 auto;
-      max-width: 320px;
+      max-width: 300px;
 
       > * {
-        margin-right: 10px;
+        margin-right: 5px;
 
         &:last-child {
           margin-right: 0;
