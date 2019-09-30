@@ -11,9 +11,27 @@ class Layout extends Component {
     isMenuOpen: true,
   };
 
+  componentDidMount() {
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
   handleToggleMenu = () => {
     const { isMenuOpen } = this.state;
     this.setState({ isMenuOpen: !isMenuOpen });
+  };
+
+  handleResize = () => {
+    const width = window.innerWidth;
+    if (width <= 1000) {
+      this.setState({ isMenuOpen: false });
+    } else {
+      this.setState({ isMenuOpen: true });
+    }
   };
 
   render() {
