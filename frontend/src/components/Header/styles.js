@@ -24,6 +24,7 @@ export const StyledHeader = styled.header`
       font-size: inherit;
       border-radius: 5px;
       padding: 8px;
+      outline: none;
     }
 
     &:last-child {

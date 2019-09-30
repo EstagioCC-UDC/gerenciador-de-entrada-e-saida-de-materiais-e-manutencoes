@@ -9,18 +9,27 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
+  #root {
+    height: 100%;
+    width: 100%;
+  }
+
+  html, body {
     -webkit-font-smoothing: antialiased;
     background-color: #fafafa;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   body, input, button {
-    font: 14px Roboto, sans-serif;
+    font: 16px Roboto, sans-serif;
   }
 
   input:-webkit-autofill,
-  input:-webkit-autofill:hover, 
-  input:-webkit-autofill:focus, 
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
   input:-webkit-autofill:active  {
     box-shadow: 0 0 0 30px #fafafa inset !important;
     -webkit-box-shadow: 0 0 0 30px #fafafa inset !important;
@@ -28,5 +37,9 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
   }
 `;

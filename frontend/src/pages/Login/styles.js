@@ -8,7 +8,7 @@ export const Container = styled.div`
   height: 100vh;
 
   > div {
-    max-height: 500px;
+    height: auto;
     border: 1px solid #bbb;
     padding: 15px 15px;
     border-radius: 20px;

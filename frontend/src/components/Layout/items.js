@@ -1,4 +1,4 @@
-import { FaHome, FaTasks } from 'react-icons/fa';
+import { FaHome, FaTasks, FaWpforms } from 'react-icons/fa';
 
 const items = [
   {
@@ -40,6 +40,11 @@ const items = [
     route: '/',
     icon: FaTasks,
     label: 'Trocar Perito',
+  },
+  {
+    route: '/form-example',
+    icon: FaWpforms,
+    label: 'Exemplo Formulario',
   },
 ];
 
