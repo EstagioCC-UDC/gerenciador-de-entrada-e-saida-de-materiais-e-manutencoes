@@ -52,6 +52,9 @@ export const MenuItem = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
 
+  background-color: ${({ active }) =>
+    `${active ? darken(0.04, '#09caed') : '#09caed'}`};
+
   &:last-child {
     border-top: 1px solid white;
   }

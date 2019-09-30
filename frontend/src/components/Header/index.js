@@ -21,7 +21,7 @@ const Header = ({ onToggleMenu }) => {
 
   return (
     <StyledHeader>
-      <button type="button" onClick={onToggleMenu}>
+      <button type="button" onClick={onToggleMenu} className="ripple">
         <FaBars />
       </button>
       <button type="button" onClick={handleLogout}>

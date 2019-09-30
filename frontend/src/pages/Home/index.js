@@ -4,7 +4,7 @@ class Home extends Component {
   componentDidMount() {}
 
   render() {
-    return <h1>teste</h1>;
+    return <h2>Home</h2>;
   }
 }
 

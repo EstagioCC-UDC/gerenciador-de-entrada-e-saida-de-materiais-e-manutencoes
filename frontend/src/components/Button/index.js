@@ -22,6 +22,7 @@ export default function Button({ onClick, text, loading, type }) {
       type={type}
       backgroundColor={typeColorMap[type]}
       loading={loading ? 1 : 0}
+      className="ripple"
     >
       {loading ? <FaSpinner /> : text}
     </StyledButton>
