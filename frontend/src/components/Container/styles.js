@@ -6,8 +6,7 @@ export const StyledContainer = styled.div`
   align-items: center;
   width: 100%;
   padding: 10px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  min-width: 300px;
 
   > div {
     border-radius: 8px;
@@ -15,4 +14,8 @@ export const StyledContainer = styled.div`
     padding: 10px;
     flex: 0 0 100%;
   }
+`;
+
+export const Title = styled.h5`
+  margin-bottom: 15px;
 `;

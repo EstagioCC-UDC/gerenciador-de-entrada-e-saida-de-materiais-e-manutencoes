@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyledContainer } from './styles';
+import { StyledContainer, Title } from './styles';
 
 class Container extends Component {
   state = {
@@ -14,24 +14,12 @@ class Container extends Component {
 
   render() {
     const { loading } = this.state;
+    const { title, children } = this.props;
     return (
-      <StyledContainer>
+      <StyledContainer className="container-fluid">
         <div>
-          <h3>{loading.toString()}</h3>
-          <h3>{loading.toString()}</h3>
-          <h3>{loading.toString()}</h3>
-          <h3>{loading.toString()}</h3>
-          <h3>{loading.toString()}</h3>
-          <h3>{loading.toString()}</h3>
-          <h3>{loading.toString()}</h3>
-          <h3>{loading.toString()}</h3>
-
-          <h3>{loading.toString()}</h3>
-          <h3>{loading.toString()}</h3>
-          <h3>{loading.toString()}</h3>
-          <h3>{loading.toString()}</h3>
-          <h3>{loading.toString()}</h3>
-          <h3>{loading.toString()}</h3>
+          <Title>{title}</Title>
+          {React.Children.map(children, child => child)}
         </div>
       </StyledContainer>
     );
@@ -40,6 +28,15 @@ class Container extends Component {
 
 Container.propTypes = {
   loading: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
+};
+
+Container.defaultProps = {
+  children: [],
 };
 
 export default Container;

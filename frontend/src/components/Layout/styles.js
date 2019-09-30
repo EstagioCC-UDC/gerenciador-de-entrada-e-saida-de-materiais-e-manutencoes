@@ -33,11 +33,10 @@ export const Menu = styled.div`
   }
 
   > span {
-    text-align: center;
-
-    > h3 {
-      margin: 16px 0;
-    }
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
