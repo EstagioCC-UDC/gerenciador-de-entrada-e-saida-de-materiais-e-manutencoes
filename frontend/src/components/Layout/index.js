@@ -8,7 +8,7 @@ import { StyledLayout, Menu, MenuItem, ApplicationContainer } from './styles';
 
 class Layout extends Component {
   state = {
-    isMenuOpen: true,
+    isMenuOpen: false,
   };
 
   componentDidMount() {

@@ -3,10 +3,11 @@ import { darken } from 'polished';
 
 export const StyledLayout = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   flex-shrink: 0;
   flex-grow: 1;
+  height: 100%;
 `;
 
 export const Menu = styled.div`
@@ -18,13 +19,13 @@ export const Menu = styled.div`
   font-size: 20px;
   font-weight: bold;
   color: white;
-  flex: 1;
-  height: 100vh;
   transition: 0.8s;
   position: relative;
+  height: 100%;
   overflow: hidden;
+  flex-shrink: 0;
 
-  ${props => `min-width: ${props.isMenuOpen ? '300px' : '0'}`}
+  ${props => `${props.isMenuOpen ? 'width: 250px' : 'width:0px'};`}
 
   a {
     text-decoration: none;
@@ -70,5 +71,7 @@ export const ApplicationContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-flow: column;
+  height: 100%;
 `;

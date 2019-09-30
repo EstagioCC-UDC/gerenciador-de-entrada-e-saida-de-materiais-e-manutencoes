@@ -9,13 +9,22 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
+  #root {
+    height: 100%;
+    width: 100%;
+  }
+
+  html, body {
     -webkit-font-smoothing: antialiased;
     background-color: #fafafa;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   body, input, button {
-    font: 14px Roboto, sans-serif;
+    font: 16px Roboto, sans-serif;
   }
 
   input:-webkit-autofill,
