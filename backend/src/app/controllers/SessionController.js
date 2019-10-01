@@ -27,6 +27,7 @@ class SessionController {
       keycloakRealm,
       keycloakTokenPath,
       keycloakClientId,
+      keycloakSecretKey,
     } = authConfig;
 
     const config = {
@@ -42,10 +43,12 @@ class SessionController {
           client_id: keycloakClientId,
           grant_type: 'refresh_token',
           refresh_token,
+          client_secret: keycloakSecretKey,
         }
       : {
           client_id: keycloakClientId,
           grant_type: 'password',
+          client_secret: keycloakSecretKey,
           username,
           password,
         };
@@ -93,6 +96,7 @@ class SessionController {
       keycloakRealm,
       keycloakLogoutPath,
       keycloakClientId,
+      keycloakSecretKey,
     } = authConfig;
 
     const config = {
@@ -104,6 +108,7 @@ class SessionController {
     const requestBody = {
       client_id: keycloakClientId,
       refresh_token: req.body.refresh_token,
+      client_secret: keycloakSecretKey,
     };
 
     await axios.post(
