@@ -51,6 +51,14 @@ Após isso, está garantido que o keycloak já está configurado e funcionando.
 
 Verifique agora se o backend está de pé acessando `http://localhost:3333`. deverá ser mostrado o json {hello: "world"}
 
+## Configurando chave pública e secreta
+
+O keycloak gera chave e pública e secreta que devem ser injetadas no `.env` do backend. Para isso, acesse o keycloak localmente após subir os containers docker em `localhost:8080` utilizando as credencias `admin` e `admin`. Selecione o Realme `Dev` que foi importado anteriormente. Clique na aba keys. Clique em Públic Key na linha do algoritmo `RS256` e copie a string para a variável `KEYCLOAK_PUBLIC_KEY` dentro do arquivo `.env`.
+
+Em seguida, acesse `Clients` no menu lateral esquerdo e clique no cliente `gesmm`. Verifique se o `Access Type` está como `confidential` (Caso não esteja, coloque como `confidential` e salve). Acesse a aba Credentials, selecione `Client Id and Secret` como `Client Authenticator` e clique em `Regenerate Secret`. Copie a string de `Secret` e cole na variável `KEYCLOAK_PUBLIC_KEY` no arquivo `.env`.
+
+Após isso, salve qualquer arquivo `.js` dentro da pasta `app` do backend para que o `nodemon` recarregue a aplicação e tente efetuar login e logout no frontend através de `localhost:3000`. Verifique se não existem logs no console do browser ou do container docker.
+
 # Ferramentas auxiliares a serem instaladas
 
 - VScode (https://code.visualstudio.com/download)

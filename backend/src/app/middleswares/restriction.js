@@ -26,7 +26,7 @@ const verifyAccess = (path, method, role) => {
 /**
  * Verifies if the token has expires and if user has permission on endpoint
  */
-export default function (req, res, next) {
+export default function(req, res, next) {
   const now = Math.floor(Date.now() / 1000);
   if (now > res.locals.userInfo.exp) {
     return res.status(401).send({ error: 'Sua sessão expirou' });
@@ -52,4 +52,4 @@ export default function (req, res, next) {
   return res
     .status(403)
     .json({ error: 'Seu usuário não possui a este recurso' });
-};
+}
