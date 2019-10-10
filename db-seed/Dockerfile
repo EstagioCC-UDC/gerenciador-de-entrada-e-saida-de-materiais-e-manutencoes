@@ -5,5 +5,8 @@ RUN chmod +x /wait
 
 ENTRYPOINT []
 
-CMD /wait && PGPASSWORD=postgres psql -h database-gesmm -p 5432 -U postgres -d gesmm -c \ 
-  "CREATE SCHEMA IF NOT EXISTS keycloak"
+CMD /wait && \ 
+  PGPASSWORD=postgres psql -h database-gesmm -p 5432 -U postgres -d gesmm -c \ 
+  "CREATE SCHEMA IF NOT EXISTS keycloak"  && \
+  PGPASSWORD=postgres psql -h database-gesmm -p 5432 -U postgres -d gesmm -c \ 
+  "CREATE SCHEMA IF NOT EXISTS gesmm"
