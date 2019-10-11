@@ -59,6 +59,10 @@ Em seguida, acesse `Clients` no menu lateral esquerdo e clique no cliente `gesmm
 
 Após isso, salve qualquer arquivo `.js` dentro da pasta `app` do backend para que o `nodemon` recarregue a aplicação e tente efetuar login e logout no frontend através de `localhost:3000`. Verifique se não existem logs no console do browser ou do container docker.
 
+## Fazendo migrações
+
+Após ter subido os containers com docker compose e com as variáveis de ambiente configuradas no `.env`, navegue até a pasta backend e rode o comando `yarn sequelize db:migrate`. Caso não funcione por falta de permissões, rode o seguinte comando `sudo chown <seu_usuario> ./node_modules` e rode o comando anterior em seguida.
+
 # Ferramentas auxiliares a serem instaladas
 
 - VScode (https://code.visualstudio.com/download)
