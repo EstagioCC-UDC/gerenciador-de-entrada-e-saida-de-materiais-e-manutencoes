@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import SessionController from './app/controllers/SessionController';
+import MaterialController from './app/controllers/MaterialController';
 import authMiddleware from './app/middleswares/auth';
 import restrictionMiddleware from './app/middleswares/restriction';
 
@@ -17,5 +18,7 @@ routes.use(authMiddleware);
 routes.post('/logout', SessionController.logout);
 
 routes.use(restrictionMiddleware);
+
+routes.get('/materiais', MaterialController.index);
 
 export default routes;

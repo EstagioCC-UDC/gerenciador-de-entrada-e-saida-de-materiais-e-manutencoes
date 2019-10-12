@@ -14,6 +14,7 @@ class Material extends Model {
       },
       {
         sequelize,
+        modelName: 'materiais',
       }
     );
 
