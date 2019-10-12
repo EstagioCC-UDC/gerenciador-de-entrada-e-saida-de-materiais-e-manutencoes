@@ -5,8 +5,9 @@ describe('Testing Material Controller index method', () => {
   /**
    * This mocks the Material model inside MaterialController
    */
-  const findAll = jest.fn().mockReturnValueOnce(Promise.resolve([]));
-  jest.doMock('../../src/app/models/Material', () => {
+  jest.resetModuleRegistry();
+  const findAll = jest.fn().mockReturnValue(Promise.resolve([]));
+  jest.mock('../../src/app/models/Material', () => {
     return {
       findAll,
     };
@@ -32,5 +33,49 @@ describe('Testing Material Controller index method', () => {
 
     expect(findAll).toHaveBeenCalledTimes(1);
     expect(findAll).toHaveBeenCalledWith({ limit: 20, offset: 20 });
+  });
+});
+
+describe('Testing Material Controller store method', () => {
+  jest.resetModuleRegistry();
+  const create = jest.fn().mockReturnValue(Promise.resolve({}));
+  jest.mock('../../src/app/models/Material', () => {
+    return {
+      create,
+    };
+  });
+  const MaterialController = require('../../src/app/controllers/MaterialController')
+    .default;
+
+  afterEach(() => {
+    create.mockReset();
+  });
+
+  test('Testing validation for empty object', async () => {
+    const req = { body: {} };
+    const res = response();
+
+    await MaterialController.store(req, res);
+    expect(create).toHaveBeenCalledTimes(0);
+    expect(res.status).toHaveBeenCalledTimes(1);
+    expect(res.status).toHaveBeenCalledWith(401);
+  });
+
+  test('Testing passing validation', async () => {
+    const req = {
+      body: {
+        nome: 'teste',
+        limiar_estoque: 100,
+        unidade_medida: 'kg',
+        estoque_total: 2000,
+        quantidade_caixa: 20,
+        identificador_caixa: 'ABC123',
+      },
+    };
+    const res = response();
+
+    await MaterialController.store(req, res);
+    expect(create).toHaveBeenCalledTimes(1);
+    expect(create).toHaveBeenCalledWith(req.body);
   });
 });
