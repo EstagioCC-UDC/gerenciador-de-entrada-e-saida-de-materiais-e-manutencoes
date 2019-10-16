@@ -19,9 +19,10 @@ routes.post('/logout', SessionController.logout);
 
 routes.use(restrictionMiddleware);
 
-routes.get('/materiais', MaterialController.index);
+routes.get('/materiais', MaterialController.get);
 routes.post('/materiais', MaterialController.store);
 routes.put('/materiais/:id', MaterialController.update);
 routes.delete('/materiais/:id', MaterialController.delete);
+routes.get('/materiais/search', MaterialController.index);
 
 export default routes;

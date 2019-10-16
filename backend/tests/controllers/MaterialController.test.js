@@ -36,6 +36,31 @@ describe('Testing Material Controller index method', () => {
   });
 });
 
+describe('Testing Material Controller get method', () => {
+  const res = response();
+  jest.resetModuleRegistry();
+  const findOne = jest.fn().mockReturnValue(Promise.resolve([]));
+  jest.mock('../../src/app/models/Material', () => {
+    return {
+      findOne,
+    };
+  });
+  const MaterialController = require('../../src/app/controllers/MaterialController')
+    .default;
+
+  afterEach(() => {
+    findOne.mockReset();
+  });
+
+  test('findOne method should be called 1', async () => {
+    const req = { query: { id: 1 } };
+    await MaterialController.get(req, res);
+
+    expect(findOne).toHaveBeenCalledTimes(1);
+    expect(findOne).toHaveBeenCalledWith({ where: { id: 1 } });
+  });
+});
+
 describe('Testing Material Controller store method', () => {
   jest.resetModuleRegistry();
   const create = jest.fn().mockReturnValue(Promise.resolve({}));

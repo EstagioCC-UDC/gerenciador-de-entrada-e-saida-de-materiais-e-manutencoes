@@ -18,7 +18,13 @@ class MaterialController {
       limit: size,
       offset: size * page,
     });
-    res.json(materiais);
+    return res.json(materiais);
+  }
+
+  async get(req, res) {
+    const { id } = req.query;
+    const material = await Material.findOne({ where: { id } });
+    return res.json(material);
   }
 
   async validate(material) {
