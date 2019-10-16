@@ -51,8 +51,44 @@ class MaterialController {
       return res.status(401).json({ error: error.errors[0] });
     }
 
-    const material = Material.create(req.body);
+    delete req.body.id;
+
+    const material = await Material.create(req.body);
     return res.json(material);
+  }
+
+  async update(req, res) {
+    const { id } = req.params;
+    try {
+      await Material.findOne({ where: { id } });
+    } catch (error) {
+      return res.status(401).json({ error: 'Id fornecido não existe' });
+    }
+
+    try {
+      await this.validate(req.body);
+    } catch (error) {
+      return res.status(401).json({ error: error.errors[0] });
+    }
+
+    const material = await Material.update(req.body, { where: { id } });
+    return res.json(material);
+  }
+
+  async delete(req, res) {
+    const { id } = req.params;
+    if (!id) {
+      return res.status(401).json({ error: 'Id não fornecido' });
+    }
+
+    try {
+      await Material.destroy({ where: { id } });
+      return res.status(204).send();
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ error: 'Este material possui entidades associadas a ele' });
+    }
   }
 }
 
