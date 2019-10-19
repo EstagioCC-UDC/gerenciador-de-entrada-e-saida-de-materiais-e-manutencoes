@@ -7,6 +7,7 @@ export const StyledContainer = styled.div`
   width: 100%;
   padding: 10px;
   min-width: 300px;
+  position: relative;
 
   > div {
     border-radius: 8px;

@@ -4,16 +4,10 @@ import { StyledContainer, Title } from './styles';
 
 class Container extends Component {
   state = {
-    loading: true,
+    loading: false,
   };
 
-  componentDidMount() {
-    const { loading } = this.props;
-    this.setState({ loading });
-  }
-
   render() {
-    const { loading } = this.state;
     const { title, children } = this.props;
     return (
       <StyledContainer className="container-fluid">

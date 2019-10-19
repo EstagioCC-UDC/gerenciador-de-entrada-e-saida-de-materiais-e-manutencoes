@@ -15,7 +15,7 @@ export const Menu = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: left;
-  background-color: #09caed;
+  background-color: #e1ad62;
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -53,7 +53,7 @@ export const MenuItem = styled.div`
   text-overflow: ellipsis;
 
   background-color: ${({ active }) =>
-    `${active ? darken(0.04, '#09caed') : '#09caed'}`};
+    `${active ? darken(0.06, '#E1AD62') : '#E1AD62'}`};
 
   &:last-child {
     border-top: 1px solid white;
@@ -64,7 +64,7 @@ export const MenuItem = styled.div`
   }
 
   &:hover {
-    background-color: ${darken(0.04, '#09caed')};
+    background-color: ${darken(0.04, '#E1AD62')};
   }
 `;
 

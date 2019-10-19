@@ -4,7 +4,6 @@ import { ToastContainer } from 'react-toastify';
 
 import GlobalStyle from './styles/global';
 import 'react-toastify/dist/ReactToastify.css';
-import './styles/global.css';
 
 import history from './services/history';
 import { getUserInfo } from './services/userInfo';
