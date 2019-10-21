@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import { StyledContainer, Title } from './styles';
 
 class Container extends Component {
-  state = {
-    loading: false,
-  };
-
   render() {
     const { title, children } = this.props;
     return (
@@ -21,7 +17,6 @@ class Container extends Component {
 }
 
 Container.propTypes = {
-  loading: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),

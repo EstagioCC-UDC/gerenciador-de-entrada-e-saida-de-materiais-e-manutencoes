@@ -6,6 +6,13 @@ import { StyledForm, LoadingContainer } from './styles';
 import FormButton from '../FormButton';
 
 class Form extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: props.loading,
+    };
+  }
+
   state = {
     loading: false,
   };

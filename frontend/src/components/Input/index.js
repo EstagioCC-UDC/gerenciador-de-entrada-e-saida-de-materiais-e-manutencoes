@@ -1,7 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Input = ({ id, label, type, placeholder, value, help, onChange }) => {
+const Input = ({
+  id,
+  label,
+  type,
+  placeholder,
+  value,
+  help,
+  onChange,
+  disabled,
+  min,
+}) => {
   return (
     <div className="form-group">
       <label htmlFor={id}>{label}</label>
@@ -12,6 +22,8 @@ const Input = ({ id, label, type, placeholder, value, help, onChange }) => {
         className="form-control"
         aria-describedby={`${id}Help`}
         onChange={onChange}
+        disabled={disabled}
+        min={min}
       />
       {help && (
         <small id={`${id}Help`} className="form-text text-muted">
@@ -30,12 +42,14 @@ Input.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   help: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  min: PropTypes.number,
 };
 
 Input.defaultProps = {
   placeholder: '',
   value: '',
   help: '',
+  min: 0,
 };
 
 export default Input;
